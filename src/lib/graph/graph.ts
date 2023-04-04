@@ -36,7 +36,7 @@ type SelectSetting = {
 export type Setting = ToggleSetting | SliderSetting | SelectSetting;
 
 
-interface SettingsCollection {
+export interface SettingsCollection {
     [key: string]: Setting
 }
 
@@ -55,16 +55,20 @@ export function defaultSettings<V extends SettingsCollection>(value: V): Derived
     return out;
 }
 
-interface Graph<S extends SettingsCollection, C> {
+export interface GraphType<S extends SettingsCollection, C> {
     name: string;
     inputs: GraphInput[];
     settings: S;
     compute(input: Row[], settings: DerivedSettings<S>): C;
-    render(data: C, settings: DerivedSettings<S>, ctx: CanvasRenderingContext2D): void;
+    render(data: C, settings: DerivedSettings<S>, ctx: CanvasRenderingContext2D, canvasData: CanvasData): void;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const GRAPHS: Graph<any, any>[] = [
+//  @typescript-eslint/no-explicit-any
+export const GRAPHS: GraphType<any, any>[] = [
     DotPlot
 ];
 
+export interface CanvasData {
+    width: number;
+    height: number;
+}

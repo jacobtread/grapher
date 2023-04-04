@@ -1,5 +1,5 @@
 import type { Row } from "$lib/data";
-import type { DerivedSettings } from "./graph";
+import type { CanvasData, DerivedSettings } from "./graph";
 
 const enum BoxPlotType {
     NONE = "No Box Plot",
@@ -78,10 +78,12 @@ interface ComputeData {
 export function compute(input: Row[], settings: Settings): ComputeData {
     console.log(input);
     console.log(settings);
-
-    return { a: 1 };
+    console.log("Computed")
+    return { a: 123 };
 }
 
-export function render(data: ComputeData, settings: Settings, ctx: CanvasRenderingContext2D) {
-    ctx.fillText("Hello world", data.a, settings["point-size"]);
+export function render(data: ComputeData, settings: Settings, ctx: CanvasRenderingContext2D, canvasData: CanvasData) {
+    console.log("Rendered");
+    ctx.fillStyle = "12px #000000";
+    ctx.fillText("Hello world", data.a, 25);
 } 
