@@ -2,7 +2,8 @@ import { parse } from '@vanillaes/csv'
 import { writable, type Writable } from "svelte/store";
 
 
-type Row = string[];
+export type Row = string[];
+
 
 export const columnNames: Writable<string[]> = writable([]);
 export const rows: Writable<Row[]> = writable([]);
