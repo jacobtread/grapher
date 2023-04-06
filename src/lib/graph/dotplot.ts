@@ -78,9 +78,17 @@ interface ComputeData {
 export function compute(input: Row[], settings: Settings): ComputeData {
     console.log(input);
     console.log(settings);
-    console.log("Computed")
+    console.log("Computed");
+
+    const start = "a".charCodeAt(0);
+    for (let i = 0; i < 26; i++) {
+        const char = String.fromCharCode(start + i);
+        console.log(char);
+    }
+
     return { a: 123 };
 }
+
 
 export function render(data: ComputeData, settings: Settings, ctx: CanvasRenderingContext2D, canvasData: CanvasData) {
     console.log("Rendered");
